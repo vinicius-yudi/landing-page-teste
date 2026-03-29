@@ -1,44 +1,25 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-primary-50: #f0f9fb;
-  --color-primary-100: #d9f0f5;
-  --color-primary-200: #b3e1eb;
-  --color-primary-300: #7ccadb;
-  --color-primary-400: #3fafc5;
-  --color-primary-500: #0d6e8a;
-  --color-primary-600: #0b5f78;
-  --color-primary-700: #0a4f64;
-  --color-primary-800: #094152;
-  --color-primary-900: #073543;
-  --color-primary-950: #042029;
+  /* PRISSMA Design System */
+  --color-primary: #003a35;
+  --color-primary-container: #01534c;
+  --color-primary-fixed: #adefe5;
+  --color-secondary: #006876;
+  --color-secondary-container: #8eebfd;
+  --color-on-surface: #111c2d;
+  --color-on-surface-variant: #3f4947;
+  --color-surface: #f9f9ff;
+  --color-surface-container: #e7eeff;
+  --color-surface-container-low: #f0f3ff;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-high: #dee8ff;
+  --color-outline: #6f7977;
+  --color-outline-variant: #bfc9c6;
+  --color-tertiary: #243448;
 
-  --color-accent-50: #fff7ed;
-  --color-accent-100: #ffedd5;
-  --color-accent-200: #fed7aa;
-  --color-accent-300: #fdba74;
-  --color-accent-400: #f59e42;
-  --color-accent-500: #e8772e;
-  --color-accent-600: #d45d1a;
-  --color-accent-700: #b04a15;
-  --color-accent-800: #8c3b12;
-  --color-accent-900: #733212;
-  --color-accent-950: #3f1807;
-
-  --color-neutral-50: #f8fafc;
-  --color-neutral-100: #f1f5f9;
-  --color-neutral-200: #e2e8f0;
-  --color-neutral-300: #cbd5e1;
-  --color-neutral-400: #94a3b8;
-  --color-neutral-500: #64748b;
-  --color-neutral-600: #475569;
-  --color-neutral-700: #334155;
-  --color-neutral-800: #1e293b;
-  --color-neutral-900: #0f172a;
-  --color-neutral-950: #020617;
-
-  --font-sans: var(--font-inter);
-  --font-heading: var(--font-plus-jakarta);
+  --font-headline: "Plus Jakarta Sans", sans-serif;
+  --font-body: "Inter", sans-serif;
 }
 
 html {
@@ -46,12 +27,68 @@ html {
 }
 
 body {
-  background: #ffffff;
-  color: var(--color-neutral-800);
-  font-family: var(--font-sans), system-ui, sans-serif;
+  background: #f9f9ff;
+  color: #111c2d;
+  font-family: var(--font-body), system-ui, sans-serif;
 }
 
 ::selection {
-  background: var(--color-primary-200);
-  color: var(--color-primary-900);
+  background: #8eebfd;
+  color: #003a35;
+}
+
+/* Glass effect */
+.glass {
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  background: rgba(249, 249, 255, 0.8);
+}
+
+/* Gradient text */
+.text-gradient {
+  background: linear-gradient(45deg, #003a35, #01534c);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Gradient bg */
+.bg-gradient-primary {
+  background: linear-gradient(45deg, #003a35, #01534c);
+}
+
+/* Fade in up animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.5s ease-out forwards;
+}
+
+/* Carousel auto-scroll */
+@keyframes scroll-left {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.carousel-track {
+  animation: scroll-left 30s linear infinite;
+}
+
+.carousel-track:hover {
+  animation-play-state: paused;
+}
+
+/* Material Symbols fix */
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  vertical-align: middle;
 }

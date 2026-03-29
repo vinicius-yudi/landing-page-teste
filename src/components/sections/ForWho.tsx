@@ -1,59 +1,90 @@
 "use client";
 
-import { HardHat, Compass, Wrench, Home } from "lucide-react";
-import Container from "@/components/ui/Container";
-import SectionHeading from "@/components/ui/SectionHeading";
-import StaggerChildren, {
-  staggerItem,
-} from "@/components/animations/StaggerChildren";
 import { motion } from "framer-motion";
-import { AUDIENCES } from "@/lib/constants";
 
-const iconMap: Record<string, React.ReactNode> = {
-  HardHat: <HardHat className="w-8 h-8" />,
-  Compass: <Compass className="w-8 h-8" />,
-  Wrench: <Wrench className="w-8 h-8" />,
-  Home: <Home className="w-8 h-8" />,
-};
-
-const colorMap: Record<string, { bg: string; text: string }> = {
-  HardHat: { bg: "bg-primary-50", text: "text-primary-500" },
-  Compass: { bg: "bg-accent-50", text: "text-accent-500" },
-  Wrench: { bg: "bg-green-50", text: "text-green-600" },
-  Home: { bg: "bg-violet-50", text: "text-violet-600" },
-};
+const profiles = [
+  {
+    title: "Engenheiros Civis",
+    description:
+      "Controle técnico rigoroso, medições precisas e gestão de cronograma físico-financeiro.",
+    icon: "engineering",
+    image: "/engenheiro1.png",
+  },
+  {
+    title: "Arquitetos",
+    description:
+      "Garanta que o projeto seja executado fielmente, gerenciando especificações e documentos.",
+    icon: "architecture",
+    image: "/arquiteta.png",
+  },
+  {
+    title: "Proprietários",
+    description:
+      "Transparência total sobre os gastos e o progresso da sua obra, na palma da mão.",
+    icon: "home_work",
+    image: "/proprietario.png",
+  },
+];
 
 export default function ForWho() {
   return (
-    <section id="para-quem" className="py-20 lg:py-28 bg-neutral-50">
-      <Container>
-        <SectionHeading
-          badge="Para Quem"
-          title="Feito para quem constrói"
-          subtitle="Cada profissional tem suas necessidades. O PRISSMA se adapta ao seu papel na obra."
-        />
-        <StaggerChildren className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {AUDIENCES.map((audience) => (
+    <section id="for-whom" className="py-24 bg-[#111c2d] overflow-hidden">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="text-center mb-20"
+        >
+          <h2 className="font-[family-name:var(--font-plus-jakarta)] text-4xl font-extrabold text-white mb-4">
+            Feito para os pilares da construção
+          </h2>
+          <p className="text-white/60 text-lg">
+            Soluções específicas para cada papel no ecossistema da obra.
+          </p>
+        </motion.div>
+
+        <div className="grid lg:grid-cols-3 gap-8">
+          {profiles.map((p, i) => (
             <motion.div
-              key={audience.role}
-              variants={staggerItem}
-              className="bg-white rounded-2xl p-6 shadow-sm border border-neutral-100 hover:shadow-md transition-all duration-300 text-center"
+              key={p.title}
+              initial={{ opacity: 0, y: 32 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.6, delay: i * 0.15 }}
+              className="group relative aspect-[3/4] rounded-3xl overflow-hidden cursor-pointer"
             >
-              <div
-                className={`w-16 h-16 ${colorMap[audience.icon]?.bg} rounded-2xl flex items-center justify-center ${colorMap[audience.icon]?.text} mx-auto mb-5`}
-              >
-                {iconMap[audience.icon]}
+              {/* Background photo */}
+              <img
+                src={p.image}
+                alt={p.title}
+                className="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-110"
+              />
+
+              {/* Dark overlay from bottom */}
+              <div className="absolute inset-0 bg-gradient-to-t from-[#111c2d] via-[#111c2d]/40 to-transparent" />
+
+              {/* Large icon */}
+              <div className="absolute top-8 left-8 w-16 h-16 rounded-2xl bg-white/10 backdrop-blur-sm flex items-center justify-center border border-white/20">
+                <span className="material-symbols-outlined text-3xl text-white">{p.icon}</span>
               </div>
-              <h3 className="text-lg font-bold text-neutral-800 mb-3 font-[family-name:var(--font-heading)]">
-                {audience.role}
-              </h3>
-              <p className="text-neutral-500 text-sm leading-relaxed">
-                {audience.description}
-              </p>
+
+              {/* Content */}
+              <div className="absolute bottom-0 p-8">
+                <h4 className="text-2xl font-[family-name:var(--font-plus-jakarta)] font-bold text-white mb-2">
+                  {p.title}
+                </h4>
+                <p className="text-white/70 text-sm mb-4 leading-relaxed">{p.description}</p>
+                <span className="inline-flex items-center gap-1 text-[#8eebfd] font-bold text-xs uppercase tracking-widest group-hover:gap-2 transition-all">
+                  Saiba mais
+                  <span className="material-symbols-outlined text-sm">arrow_forward</span>
+                </span>
+              </div>
             </motion.div>
           ))}
-        </StaggerChildren>
-      </Container>
+        </div>
+      </div>
     </section>
   );
 }

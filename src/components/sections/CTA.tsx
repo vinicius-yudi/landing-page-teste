@@ -1,45 +1,81 @@
 "use client";
 
-import Container from "@/components/ui/Container";
-import Button from "@/components/ui/Button";
-import FadeIn from "@/components/animations/FadeIn";
+import { motion } from "framer-motion";
 
 export default function CTA() {
   return (
-    <section className="py-20 lg:py-28 relative overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary-600 via-primary-500 to-primary-700" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(255,255,255,0.1),transparent)]" />
+    <section className="py-24 bg-[#f9f9ff]">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+        <motion.div
+          initial={{ opacity: 0, y: 32 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="bg-gradient-primary rounded-[2.5rem] p-12 md:p-20 text-center relative overflow-hidden"
+        >
+          {/* Decorative circles */}
+          <div className="absolute top-0 left-0 w-64 h-64 rounded-full bg-[#8eebfd]/10 -translate-x-1/2 -translate-y-1/2 pointer-events-none" />
+          <div className="absolute bottom-0 right-0 w-96 h-96 rounded-full bg-[#8eebfd]/10 translate-x-1/3 translate-y-1/3 pointer-events-none" />
+          <div className="absolute top-1/2 left-1/4 w-32 h-32 rounded-full bg-white/5 pointer-events-none" />
 
-      <Container className="relative z-10">
-        <FadeIn>
-          <div className="text-center max-w-3xl mx-auto">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white font-[family-name:var(--font-heading)] leading-tight mb-6">
-              Pronto para transformar a gestão da sua obra?
-            </h2>
-            <p className="text-lg text-primary-100 mb-8 leading-relaxed">
-              Comece gratuitamente e veja a diferença. Sem cartão de crédito,
-              sem compromisso. Sua primeira obra organizada em minutos.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button
-                variant="secondary"
-                size="lg"
-                className="bg-white text-primary-600 hover:bg-neutral-50 shadow-lg"
-              >
-                Criar Minha Conta Grátis
-              </Button>
-              <Button
-                variant="outline"
-                size="lg"
-                className="border-white/30 text-white hover:bg-white/10"
-              >
-                Falar com Consultor
-              </Button>
-            </div>
+          <div className="relative z-10 max-w-2xl mx-auto">
+            <motion.span
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: 0.2 }}
+              className="inline-block py-1 px-3 rounded-full bg-[#8eebfd]/20 text-[#8eebfd] font-semibold text-xs tracking-wider uppercase mb-6 border border-[#8eebfd]/30"
+            >
+              Comece hoje mesmo
+            </motion.span>
+
+            <motion.h2
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              className="font-[family-name:var(--font-plus-jakarta)] text-4xl md:text-5xl font-extrabold text-white mb-8 leading-tight"
+            >
+              Pronto para elevar o nível das suas obras?
+            </motion.h2>
+
+            <motion.p
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+              className="text-white/80 text-lg mb-12"
+            >
+              Junte-se a milhares de profissionais que já transformaram sua gestão com a PRISSMA.
+            </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.5 }}
+              className="flex flex-col sm:flex-row gap-4 justify-center"
+            >
+              <button className="bg-[#8eebfd] text-[#111c2d] px-10 py-5 rounded-2xl font-black text-lg hover:scale-105 active:scale-95 transition-transform shadow-2xl">
+                Comece Grátis Agora
+              </button>
+              <button className="bg-white/10 text-white border border-white/20 backdrop-blur-md px-10 py-5 rounded-2xl font-bold text-lg hover:bg-white/20 transition-all">
+                Agendar Demo VIP
+              </button>
+            </motion.div>
+
+            <motion.p
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.7 }}
+              className="mt-8 text-white/50 text-xs"
+            >
+              Sem cartão de crédito necessário. Teste por 14 dias sem compromisso.
+            </motion.p>
           </div>
-        </FadeIn>
-      </Container>
+        </motion.div>
+      </div>
     </section>
   );
 }

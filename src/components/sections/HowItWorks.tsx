@@ -1,57 +1,114 @@
 "use client";
 
-import { FolderPlus, ListChecks, Activity, Brain } from "lucide-react";
-import Container from "@/components/ui/Container";
-import SectionHeading from "@/components/ui/SectionHeading";
-import StaggerChildren, {
-  staggerItem,
-} from "@/components/animations/StaggerChildren";
 import { motion } from "framer-motion";
-import { STEPS } from "@/lib/constants";
 
-const iconMap: Record<string, React.ReactNode> = {
-  FolderPlus: <FolderPlus className="w-6 h-6" />,
-  ListChecks: <ListChecks className="w-6 h-6" />,
-  Activity: <Activity className="w-6 h-6" />,
-  Brain: <Brain className="w-6 h-6" />,
-};
+const steps = [
+  {
+    num: "01",
+    title: "Cadastre a Obra",
+    description: "Importe seus orçamentos e defina os marcos iniciais do projeto.",
+    highlight: false,
+  },
+  {
+    num: "02",
+    title: "Engaje a Equipe",
+    description: "Convide colaboradores e parceiros para colaborar na plataforma.",
+    highlight: false,
+  },
+  {
+    num: "03",
+    title: "Monitore em Tempo Real",
+    description: "Acompanhe fotos, diários de obra e medições direto do seu celular.",
+    highlight: false,
+  },
+  {
+    num: "04",
+    title: "Analise e Cresça",
+    description: "Use dados de IA para prever atrasos e otimizar seus próximos orçamentos.",
+    highlight: true,
+  },
+];
 
 export default function HowItWorks() {
   return (
-    <section id="como-funciona" className="py-20 lg:py-28">
-      <Container>
-        <SectionHeading
-          badge="Como Funciona"
-          title="Simples de começar, poderoso de usar"
-          subtitle="Em poucos passos você já tem sua obra organizada e sob controle."
-        />
-        <StaggerChildren className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {STEPS.map((step, index) => (
+    <section id="how-it-works" className="py-24 bg-[#f9f9ff]">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+        {/* Heading */}
+        <div className="flex flex-col md:flex-row items-end justify-between mb-16 gap-8">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="max-w-xl"
+          >
+            <h2 className="font-[family-name:var(--font-plus-jakarta)] text-4xl font-extrabold text-[#111c2d] mb-6">
+              Simplicidade que gera escala
+            </h2>
+            <p className="text-[#3f4947] text-lg">
+              Implementação rápida para que você foque no que importa: construir.
+            </p>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="text-[#006876] font-black text-8xl opacity-10 leading-none select-none"
+          >
+            PROCESS
+          </motion.div>
+        </div>
+
+        {/* Steps */}
+        <div className="grid md:grid-cols-4 gap-4">
+          {steps.map((step, i) => (
             <motion.div
-              key={step.title}
-              variants={staggerItem}
-              className="relative text-center"
+              key={step.num}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{ duration: 0.5, delay: i * 0.1 }}
+              className={`relative p-8 rounded-2xl ${
+                step.highlight
+                  ? "bg-gradient-primary text-white shadow-2xl shadow-[#003a35]/20"
+                  : "bg-[#e7eeff]"
+              }`}
             >
-              {/* Connector line (hidden on last item and mobile) */}
-              {index < STEPS.length - 1 && (
-                <div className="hidden lg:block absolute top-8 left-[60%] w-[80%] h-[2px] bg-neutral-200" />
-              )}
-              <div className="relative mx-auto w-16 h-16 bg-primary-500 rounded-2xl flex items-center justify-center text-white mb-6 shadow-lg shadow-primary-500/20">
-                {iconMap[step.icon]}
-                <span className="absolute -top-2 -right-2 w-6 h-6 bg-accent-500 rounded-full text-white text-xs font-bold flex items-center justify-center">
-                  {step.number}
-                </span>
-              </div>
-              <h3 className="text-lg font-bold text-neutral-800 mb-2 font-[family-name:var(--font-heading)]">
+              <span
+                className={`text-4xl font-black mb-6 block ${
+                  step.highlight ? "text-white/20" : "text-[#003a35]/20"
+                }`}
+              >
+                {step.num}
+              </span>
+              <h4
+                className={`font-bold text-lg mb-2 ${
+                  step.highlight ? "text-white" : "text-[#111c2d]"
+                }`}
+              >
                 {step.title}
-              </h3>
-              <p className="text-neutral-500 text-sm leading-relaxed">
+              </h4>
+              <p
+                className={`text-sm ${
+                  step.highlight ? "text-white/80" : "text-[#3f4947]"
+                }`}
+              >
                 {step.description}
               </p>
+
+              {/* Connector */}
+              {i < steps.length - 1 && (
+                <div className="hidden md:block absolute top-1/2 -right-2 z-10 -translate-y-1/2">
+                  <span className="material-symbols-outlined text-[#bfc9c6] text-xl">
+                    chevron_right
+                  </span>
+                </div>
+              )}
             </motion.div>
           ))}
-        </StaggerChildren>
-      </Container>
+        </div>
+      </div>
     </section>
   );
 }
