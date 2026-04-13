@@ -7,7 +7,6 @@ import DetailedFeatures from "@/components/sections/DetailedFeatures";
 import Testimonials from "@/components/sections/Testimonials";
 import Pricing from "@/components/sections/Pricing";
 import FAQ from "@/components/sections/FAQ";
-import CTA from "@/components/sections/CTA";
 import Footer from "@/components/layout/Footer";
 
 export default function Home() {
@@ -23,7 +22,6 @@ export default function Home() {
         <Testimonials />
         <Pricing />
         <FAQ />
-        <CTA />
       </main>
       <Footer />
     </>

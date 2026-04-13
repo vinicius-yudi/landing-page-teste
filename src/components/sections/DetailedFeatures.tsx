@@ -6,9 +6,8 @@ const resources = [
   { icon: "book", title: "Diário de Obra", description: "Relatórios diários automáticos com fotos e clima integrados." },
   { icon: "description", title: "Gestão de Documentos", description: "Armazenamento em nuvem seguro para projetos, alvarás e notas." },
   { icon: "psychology", title: "Previsões com IA", description: "Inteligência que antecipa atrasos e sugere correções no orçamento." },
-  { icon: "inventory_2", title: "Estoque e Insumos", description: "Controle total de entrada e saída de materiais no canteiro." },
-  { icon: "mobile_friendly", title: "App Offline", description: "Trabalhe mesmo sem sinal de internet e sincronize depois." },
-  { icon: "analytics", title: "Relatórios BI", description: "Dashboards analíticos para decisões baseadas em dados reais." },
+  { icon: "inventory_2", title: "Controle Orçamentário", description: "Controle total de custos e orçamentos da obra." },
+  { icon: "analytics", title: "Relatórios e Dashboards", description: "Dashboards analíticos para decisões baseadas em dados reais." },
 ];
 
 export default function DetailedFeatures() {

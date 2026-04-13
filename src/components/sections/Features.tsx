@@ -23,15 +23,9 @@ const features = [
   },
   {
     icon: "analytics",
-    title: "Relatórios com BI",
+    title: "Relatórios e Dashboards",
     description:
       "Dashboards analíticos com dados em tempo real para decisões estratégicas e precisas na obra.",
-  },
-  {
-    icon: "mobile_friendly",
-    title: "App Offline",
-    description:
-      "Trabalhe sem sinal no canteiro. Dados sincronizados automaticamente quando a conexão retornar.",
   },
   {
     icon: "psychology",
